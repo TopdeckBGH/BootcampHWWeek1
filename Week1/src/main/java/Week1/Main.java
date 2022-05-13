@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,12 +26,15 @@ public class Main {
         WebElement webElementLoginPW = driver.findElement(By.cssSelector("[placeholder=\"Şifreniz\"]"));
         webElementLoginPW.sendKeys("1234");
 
-        driver.manage().timeouts().implicitlyWait( 20000, TimeUnit.MILLISECONDS);
-        WebElement webElementSignUpError = driver.findElement(By.id("RegisterFormView_Password-error"));
+
+        driver.manage().timeouts().implicitlyWait( 5000, TimeUnit.MILLISECONDS);
+
+        WebElement webElementSignUpError = driver.findElement(By.cssSelector("[id=RegisterFormView_Password-error]"));
         if (webElementSignUpError.getText() == null)
         {
             System.out.println("Verilen sürede hata alınamadı.");
         }
+        driver.manage().timeouts().implicitlyWait( 5000, TimeUnit.MILLISECONDS);
         System.out.println(webElementSignUpError.getText());
 
         driver.close();
